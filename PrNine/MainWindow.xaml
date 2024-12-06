@@ -1,0 +1,43 @@
+﻿<Window x:Class="PrNine.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrNine"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!--Разделители по колонкам-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <!-- Меню -->
+        <Menu Grid.ColumnSpan="5" Margin="0,0,0,60">
+            <MenuItem Header="⚙️">
+                <MenuItem Header="⚙️ О програме" Click="About"/>
+                <MenuItem Header="✖ Выход" Click="Exit"/>
+            </MenuItem>
+        </Menu>
+        <!--Основное меню для взаимедействия Label и TextBox-->
+        <Label Content="Добавление участников" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Width="166"/>
+        <Label Content="Введите ФИО" VerticalAlignment="Top" Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" FontSize="14"/> <!--Лэйбл "Введите ФИО"--> 
+        <TextBox x:Name="fio_TB" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="30"/> <!--Текст бокс для ввода Имени Фамилии и Отчества-->
+        <Label Content="Введите номер участника" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" HorizontalContentAlignment="Center" FontSize="14"/> <!--Лэйбл ввода Номера участника-->
+        <TextBox x:Name="num_TB" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="30"/> <!--Текст бокс для ввода номера участника-->
+        <Label Content="Введите результат участника (в секундах)" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" HorizontalContentAlignment="Center" FontSize="14"/> <!--Лэйбел ввода результата участника-->
+        <TextBox x:Name="res_TB" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Margin="30"/><!--Текст бокс для ввода результата (в секундах)-->
+        <!--Кнопки-->
+        <Button Content="Добавить участника" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" FontSize="14" Click="AddPeople"/> <!--Кнопка на добавление участников-->
+    </Grid>
+</Window>
