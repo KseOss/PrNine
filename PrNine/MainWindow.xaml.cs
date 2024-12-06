@@ -1,4 +1,5 @@
-﻿using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,9 +14,6 @@ using static PRNINE.Class1;
 
 namespace PrNine
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private Participant[] participant; //массив участников забега
@@ -51,14 +49,33 @@ namespace PrNine
                     num_TB.Clear();
                     res_TB.Clear();
 
-                 
+                    DisplayResults();
                 }
                 else
                 {
-                    MessageBox("Пожалуста, введите")
+                    MessageBox.Show("Пожалуста, введите корректные данные для номера и результат", "ОШИБКА ВВОДА");
                 }
-
             }
+            else
+            {
+                MessageBox.Show("Достигнуто максимальное количество участников","");
+            }
+        }
+        private void DisplayResults()
+        {
+            string resultat = "Итог: \n\n";
+            double _result = 0;
+
+            for (int i = 0; i < participantCount; i++) 
+            {
+                resultat += $"{participant[i].FIO} №({participant[i].Number}) : {participant[i].Result} сек. \n";
+                _result = participant[i].Result;
+            }
+            double AVG = _result / participantCount; //средний рузельтат
+            resultat += $"\nСредний результат: {AVG} сек";
+
+            //вывод результата
+            MessageBox.Show(resultat, "Результаты забега");
         }
     }
 }
