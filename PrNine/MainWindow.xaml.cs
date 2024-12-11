@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,6 +38,7 @@ namespace PrNine
         //Кнопка добавления участников
         private void AddPeople(object sender, RoutedEventArgs e)
         {
+           
             if (participantCount < 8)
             {
                 string fio = fio_TB.Text;
@@ -63,19 +65,23 @@ namespace PrNine
         }
         private void DisplayResults()
         {
-            string resultat = "Итог: \n\n";
+            
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ФИО");
+            dt.Columns.Add("Номер");
+            dt.Columns.Add("Результат (сек)");
             double _result = 0;
 
-            for (int i = 0; i < participantCount; i++) 
+            for (int i = 0; i < participantCount; i++)
             {
-                resultat += $"{participant[i].FIO} №({participant[i].Number}) : {participant[i].Result} сек. \n";
-                _result = participant[i].Result;
+                dt.Rows.Add(participant[i].FIO, participant[i].Number, participant[i].Result);
+                _result += participant[i].Result;
             }
             double AVG = _result / participantCount; //средний рузельтат
-            resultat += $"\nСредний результат: {AVG} сек";
+            ResultsDataGrid.ItemsSource = dt.DefaultView;
+            AvgResults.Text = ($"Средний результат: {AVG:F2} секунд");
 
-            //вывод результата
-            MessageBox.Show(resultat, "Результаты забега");
+
         }
     }
 }
