@@ -5,11 +5,11 @@ namespace PRNINE
     {
         public struct Participant
         {
-            public string FIO; // ФИО участников
-            public int Number; // Номер участника
-            public double Result; // Результат забега (в секундах)
+            public string FIO; // Р¤РРћ СѓС‡Р°СЃС‚РЅРёРєРѕРІ
+            public int Number; // РќРѕРјРµСЂ СѓС‡Р°СЃС‚РЅРёРєР°
+            public double Result; // Р РµР·СѓР»СЊС‚Р°С‚ Р·Р°Р±РµРіР° (РІ СЃРµРєСѓРЅРґР°С…)
 
-            //Инициализация участников
+            //РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СѓС‡Р°СЃС‚РЅРёРєРѕРІ
             public Participant(string fio, int number, double result)
             {
                 FIO = fio;
