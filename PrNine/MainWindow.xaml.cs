@@ -41,7 +41,7 @@ namespace PrNine
            
             if (participantCount < 8)
             {
-                string fio = fio_TB.Text;
+                string fio = fio_TB.Text.Trim(); //удаляет лишние пробелы
                 if (int.TryParse(num_TB.Text, out int number) && double.TryParse(res_TB.Text,out double result))
                 {
                     participant[participantCount] = new Participant(fio,number,result);
@@ -79,9 +79,8 @@ namespace PrNine
             }
             double AVG = _result / participantCount; //средний рузельтат
             ResultsDataGrid.ItemsSource = dt.DefaultView;
-            AvgResults.Text = ($"Средний результат: {AVG:F2} секунд");
-
-
+            AvgResults.Text = ($"Средний результат: {AVG:F2} секунд"); //F2 означает что значение переменной будет отображатся в виде числа с двумя десятичными знакаками
+                                                                       //т.е было 12.3435453453, станет 12.34
         }
     }
 }
