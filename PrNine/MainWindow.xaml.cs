@@ -42,6 +42,14 @@ namespace PrNine
             if (participantCount < 8)
             {
                 string fio = fio_TB.Text.Trim(); //удаляет лишние пробелы
+
+                if (string.IsNullOrWhiteSpace(fio)) 
+                {
+                    MessageBox.Show("Введите корректное ФИО", "Ошика ввода");
+                    return;
+                }
+
+
                 if (int.TryParse(num_TB.Text, out int number) && double.TryParse(res_TB.Text,out double result))
                 {
                     participant[participantCount] = new Participant(fio,number,result);
